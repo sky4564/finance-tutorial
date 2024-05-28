@@ -1,8 +1,8 @@
+import { UserButton } from "@clerk/nextjs";
+
 const TestPage = () => {
     return (
-        <p>
-            This is authenticated route
-        </p>
+        <UserButton afterSignOutUrl="/" />
     );
 };
 
