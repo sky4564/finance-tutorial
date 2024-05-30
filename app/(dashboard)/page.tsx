@@ -2,7 +2,12 @@ import { UserButton } from "@clerk/nextjs";
 
 const TestPage = () => {
     return (
-        <UserButton afterSignOutUrl="/" />
+        <div>
+            DashBoard
+        </div>
+
+
+        // <UserButton afterSignOutUrl="/" />
     );
 };
 
