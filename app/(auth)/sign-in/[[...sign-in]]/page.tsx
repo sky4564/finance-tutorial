@@ -9,7 +9,7 @@ export default function Page() {
         <div className="text-center space-y-4">
           <h1 className="font-bold text-3xl text-[#2E2A47]">Welcome Back!</h1>
           <p className="text-base text-[#7E8CA0]">Log in or Create account to get back to your dashboard ! </p>
-        </div>6
+        </div>
         <div className="flex items-center justify-center mt-8">
           <ClerkLoaded>
             <SignIn path="/sign-in" />
