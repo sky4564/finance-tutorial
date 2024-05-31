@@ -4,22 +4,21 @@ import { handle } from "hono/vercel";
 import { zValidator } from "@hono/zod-validator";
 import { clerkMiddleware, getAuth } from '@hono/clerk-auth';
 
+
 export const runtime = 'edge'
 
-import authors from './authors'
-import books from './books'
+import accounts from './accounts'
 
 const app = new Hono().basePath('/api')
 
-app
-    .get(
-        '/hello',
-        clerkMiddleware(),
-        
-    )
+const routes = app
+    .route("/accounts", accounts);
 
-app.route('/authors', authors)
-app.route('/books', books)
+
 
 export const GET = handle(app);
 export const POST = handle(app);
+ 
+
+
+export type AppType = typeof routes;
