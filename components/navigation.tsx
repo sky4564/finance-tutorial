@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation"
 import { useMedia } from "react-use";
 
@@ -41,7 +41,11 @@ const routes = [
 ]
 
 
+
 export const Navigation = () => {
+    
+    
+
     const [isOpen, setIsOpen] = useState(false)
 
     const router = useRouter();
@@ -52,7 +56,7 @@ export const Navigation = () => {
         router.push(href);
         setIsOpen(false);
     }
-
+    
     if (isMobile) {
         return (
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
