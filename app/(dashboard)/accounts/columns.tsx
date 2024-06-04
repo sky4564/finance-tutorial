@@ -7,6 +7,7 @@ import { ArrowUpDown } from "lucide-react"
 import { client } from "@/lib/hono"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Actions } from "./actions"
 
 export type ResponseType = InferResponseType<typeof client.api.accounts.$get, 200>["data"][0]
 
@@ -16,7 +17,7 @@ export type ResponseType = InferResponseType<typeof client.api.accounts.$get, 20
 export type Payment = {
   id: string
   amount: number
-  status: "pending" | "processing" | "success" | "failed"  
+  status: "pending" | "processing" | "success" | "failed"
 }
 
 export const columns: ColumnDef<ResponseType>[] = [
@@ -56,4 +57,9 @@ export const columns: ColumnDef<ResponseType>[] = [
       )
     },
   },
+  {
+    id: "actions",
+    cell: ({ row }) => <Actions id={row.original.id} />
+  }
+
 ]

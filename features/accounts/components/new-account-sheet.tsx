@@ -2,7 +2,7 @@ import { z } from "zod";
 
 import { AccountForm } from "@/features/accounts/components/account-form";
 import { useNewAccount } from "@/features/accounts/hooks/use-new-accounts"
-import { useCreateAccount } from "@/features/accounts/api/use-create-accounts";
+import { useCreateAccount } from "@/features/accounts/api/use-create-account";
 
 import { insertAccountSchema } from "@/db/schema";
 
