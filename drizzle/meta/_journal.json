@@ -1,12 +1,12 @@
 {
-  "version": "5",
-  "dialect": "pg",
+  "version": "6",
+  "dialect": "postgresql",
   "entries": [
     {
       "idx": 0,
-      "version": "5",
-      "when": 1717061340962,
-      "tag": "0000_short_tempest",
+      "version": "6",
+      "when": 1717573646683,
+      "tag": "0000_lame_toxin",
       "breakpoints": true
     }
   ]
