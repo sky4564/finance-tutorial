@@ -1,8 +1,9 @@
 "ues client";
 
 import { Button } from "@/components/ui/button";
-import { useOpenAccount } from "@/features/accounts/hooks/use-open-account";
-import { useDeleteAccount } from "@/features/accounts/api/use-delete-account";
+import { useOpenTransaction } from "@/features/transactions/hooks/use-open-transaction";
+import { useDeleteTransaction } from "@/features/transactions/api/use-delete-transaction";
+
 import { useConFirm } from "@/hooks/use-confirm";
 
 import {
@@ -22,12 +23,12 @@ type Props = {
 export const Actions = ({ id }: Props) => {
   const [ConfimDialog, confirm] = useConFirm(
     "Are you sure?",
-    "You are about to delete this account?"
+    "You are about to delete this transactions ?"
   )
 
-  const deleteMutation = useDeleteAccount(id)
+  const deleteMutation = useDeleteTransaction(id)
 
-  const { onOpen } = useOpenAccount();
+  const { onOpen } = useOpenTransaction();
 
   const handleDelete = async () => {
     const ok = await confirm();
