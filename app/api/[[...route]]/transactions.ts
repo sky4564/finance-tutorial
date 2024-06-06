@@ -8,7 +8,7 @@ import { HTTPException } from "hono/http-exception"
 import { createId } from "@paralleldrive/cuid2"
 
 import { db } from "@/db/drizzle"
-import { transactions, insertTransactionsSchema, categories, accounts } from "@/db/schema"
+import { transactions, insertTransactionSchema, categories, accounts } from "@/db/schema"
 import { zValidator } from "@hono/zod-validator";
 
 
@@ -133,7 +133,7 @@ const app = new Hono()
   .post(
     "/",
     clerkMiddleware(),
-    zValidator("json", insertTransactionsSchema.omit({
+    zValidator("json", insertTransactionSchema.omit({
       id: true,
     })),
 
@@ -151,6 +151,36 @@ const app = new Hono()
       }).returning()
 
       return c.json({ data });
+    }
+  )
+  .post(
+    "/bulk-create",
+    clerkMiddleware(),
+    zValidator(
+      "json",
+      z.array(
+        insertTransactionSchema.omit({
+          id: true,
+        })
+      )
+    ),
+    async (c) => {
+      const auth = getAuth(c);
+      const values = c.req.valid("json")
+      if (!auth?.userId) {
+        return c.json({ error: "unauthorized" }, 401)
+      }
+      const data = await db
+        .insert(transactions)
+        .values(
+          values.map((value) => ({
+            id: createId(),
+            ...value,
+          }))
+        )
+        .returning()
+
+      return c.json({ data })
     }
   )
   .post(
@@ -205,7 +235,7 @@ const app = new Hono()
     ),
     zValidator(
       "json",
-      insertTransactionsSchema.omit({
+      insertTransactionSchema.omit({
         id: true,
       })
     ),
