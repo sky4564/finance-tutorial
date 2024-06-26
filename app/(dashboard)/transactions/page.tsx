@@ -41,7 +41,7 @@ const INITAL_IMPORT_RESULTS = {
   meta: {},
 }
 
-const TransactionsPage = () => {
+const TransactionsPage = () => {  
   const [AccountDialog, confirm] = useSelectAccount();
   const [variant, setVariant] = useState<VARIANTS>(VARIANTS.LIST);
   const [importResults, setImportResults] = useState(INITAL_IMPORT_RESULTS)
@@ -76,10 +76,13 @@ const TransactionsPage = () => {
       return toast.error("Please select an account to continue")
     }
 
-    const data = values.map((value=> ({
+    console.log('this is values',values)
+    console.log(values)    
+    //error 발생
+    const data = values.map((value) => ({
       ...value,
       accountId: accountId as string,
-    })))
+    })) 
     
     createTransactions.mutate(data, {
       onSuccess: () => {
