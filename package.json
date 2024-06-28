@@ -10,6 +10,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
+    "db:seed": "bun ./scripts/seed.ts",
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
@@ -31,6 +32,7 @@
     "@tanstack/react-query": "^5.40.0",
     "@tanstack/react-table": "^8.17.3",
     "add": "^2.0.6",
+    "bun": "^1.1.17",
     "calendar": "^0.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -42,10 +44,12 @@
     "next": "14.2.3",
     "next-themes": "^0.3.0",
     "react": "^18",
+    "react-countup": "^6.5.3",
     "react-currency-input-field": "^3.8.0",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18",
     "react-hook-form": "^7.51.5",
+    "react-icons": "^5.2.1",
     "react-papaparse": "^4.4.0",
     "react-select": "^5.8.0",
     "react-use": "^17.5.0",
