@@ -5,6 +5,7 @@ import { Loader2 } from 'lucide-react';
 import { HeaderLogo } from '@/components/header-logo'
 import { Navigation } from '@/components/navigation';
 import { WelcomeMsg } from '@/components/welcome-msg';
+import { Filters } from '@/components/filters';
 
 export const Header = () => {
     return (
@@ -14,16 +15,17 @@ export const Header = () => {
                     <div className='flex items-center lg:gap-x-16'>
                         <HeaderLogo />
                         <Navigation />
-                    </div>                                        
+                    </div>
                     <ClerkLoaded>
                         <UserButton afterSignOutUrl='/' />
                     </ClerkLoaded>
                     <ClerkLoading>
                         <Loader2 className='size-8 animate-spin text-slate-400'></Loader2>
-                    </ClerkLoading>                    
+                    </ClerkLoading>
                 </div>
             </div>
-            <WelcomeMsg></WelcomeMsg>
+            <WelcomeMsg />
+            <Filters />
         </header>
     );
 };
